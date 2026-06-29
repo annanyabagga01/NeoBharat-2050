@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Bharat: India 2050 | A Cinematic Vision</title>
+    <meta name="description" content="Experience the future of India in 2050. A cinematic interactive journey through Delhi's flying metros, AI governance, and Mars colonies.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js and GSAP via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="glitch" data-text="NEO BHARAT">NEO BHARAT</h1>
+            <div class="loader-bar"></div>
+            <p>Initializing Future... 2050</p>
+        </div>
+    </div>
+
+    <div id="scroll-progress"></div>
+    <div class="scanlines"></div>
+    <div id="cursor-glow"></div>
+
+    <div id="news-ticker">
+        <div class="ticker-wrapper">
+            <div class="ticker-item">BREAKING: DELHI METRO ANNOUNCES MARS-GATEWAY LINK</div>
+            <div class="ticker-item">BENGALURU NEURAL-SERVER CAPACITY REACHES 100 EXAFLOPS</div>
+            <div class="ticker-item">MINISTRY OF AI PROPOSES NEW SOCIAL CREDIT REFORMS</div>
+            <div class="ticker-item">ISRO LANDS SECOND COLONY MODULE IN VALLES MARINERIS</div>
+            <div class="ticker-item">DIGITAL DEMOCRACY: 98.7% CITIZENS CAST NEURAL VOTES IN 2050 ELECTION</div>
+        </div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="container">
+                <div class="hero-text">
+                    <h2 class="reveal-text">WELCOME TO INDIA</h2>
+                    <h1 class="reveal-text delay-1">YEAR 2050</h1>
+                    <p class="reveal-text delay-2">Experience the evolution of a civilization.</p>
+                </div>
+                <div class="scroll-indicator">
+                    <span>EXPLORE</span>
+                    <div class="mouse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Delhi -->
+        <section id="delhi" class="section">
+            <div class="container split">
+                <div class="content-box">
+                    <span class="tag">CHAPTER 01</span>
+                    <h2>Neo Delhi</h2>
+                    <p>Vertical forests meet silicon skies. The capital is now a decentralized AI-driven megacity where gravity is just a suggestion.</p>
+                    <ul class="features">
+                        <li>Flying Metros</li>
+                        <li>Climate-Controlled Bubbles</li>
+                        <li>Holographic Chandni Chowk</li>
+                    </ul>
+                </div>
+                <div class="visual-box" id="delhi-visual">
+                    <img src="delhi.png" alt="Neo Delhi 2050" class="parallax-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="section">
+            <div class="container">
+                <div class="center-content">
+                    <span class="tag">CHAPTER 02</span>
+                    <h2>Brain-Chip Pedagogy</h2>
+                    <p>Knowledge is no longer acquired; it's uploaded. Instant mastery of any skill via neural-link servers in Bengaluru.</p>
+                    <div class="skill-chip-interaction">
+                        <div class="chip-slot" id="chip-slot">
+                            <div class="chip" draggable="true" id="skill-chip">AI ARCHITECT</div>
+                        </div>
+                        <div class="instruction">Drag the chip into the neural port</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Politics -->
+        <section id="politics" class="section dark-red">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="visual-box" id="politics-visual">
+                        <div class="video-feed-overlay">
+                            <span class="live-tag">● LIVE FEED</span>
+                            <span class="cam-id">CAM_ORBITAL_09</span>
+                        </div>
+                        <img src="rally.png" alt="AI Rally 2050" class="video-img">
+                        <div class="social-score-card">
+                            <h3>CITIZEN #IN-4092</h3>
+                            <div class="score">842</div>
+                            <p>Social Trust Index: HIGH</p>
+                        </div>
+                        <div class="face-scan-overlay">
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <span class="tag">CHAPTER 03</span>
+                        <h2>The Algorithmic Republic</h2>
+                        <p>No more rallies. AI politicians simulate billions of outcomes to create policies that maximize national happiness.</p>
+                        <div class="warning">TOTAL SURVEILLANCE ACTIVE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Climate -->
+        <section id="climate" class="section">
+            <div class="container split">
+                <div class="visual-box" id="climate-visual">
+                    <img src="climate_green.png" alt="Sustainble India 2050" class="parallax-img">
+                </div>
+                <div class="content-box">
+                    <span class="tag">CHAPTER 04</span>
+                    <h2>The Great Balance</h2>
+                    <p>We chose the path of Dharma. Restored ecosystems, clean rivers, and solar-shielded cities have replaced the decay of the past.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════ -->
+        <!-- CHAPTER 05 — Digital Democracy (VOTING)   -->
+        <!-- ══════════════════════════════════════════ -->
+        <section id="voting" class="section">
+            <div class="container">
+                <div class="voting-header">
+                    <span class="tag">CHAPTER 05</span>
+                    <h2>Digital Democracy</h2>
+                    <p>Two systems of voting coexist in Neo Bharat 2050. Cast your vote — your neural signature decides the future.</p>
+                </div>
+
+                <div class="voting-arena">
+                    <!-- TYPE 1: AI Neural Vote -->
+                    <div class="vote-chamber ai-chamber" id="ai-vote-chamber">
+                        <div class="chamber-header">
+                            <div class="chamber-icon">🤖</div>
+                            <h3>TYPE I — AI Neural Vote</h3>
+                            <p class="chamber-desc">Your brain-chip automatically analyses 10,000 variables and casts a data-driven vote on your behalf.</p>
+                        </div>
+                        <div class="vote-bar-wrap">
+                            <div class="vote-bar-bg">
+                                <div class="vote-bar ai-bar" id="ai-bar" style="width: 62%;">
+                                    <span class="bar-pct" id="ai-pct">62%</span>
+                                </div>
+                            </div>
+                            <span class="vote-label">NEURAL CONSENSUS</span>
+                        </div>
+                        <div class="vote-count-display">
+                            <span class="vote-num" id="ai-votes">620,000,000</span>
+                            <span class="vote-unit">votes cast by AI</span>
+                        </div>
+                        <button class="vote-btn ai-vote-btn" id="cast-ai-vote">
+                            <span class="btn-icon">⚡</span> CAST NEURAL VOTE
+                        </button>
+                        <div class="vote-feedback" id="ai-feedback"></div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="vote-divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-label">VS</div>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <!-- TYPE 2: Human Conscience Vote -->
+                    <div class="vote-chamber human-chamber" id="human-vote-chamber">
+                        <div class="chamber-header">
+                            <div class="chamber-icon">🧠</div>
+                            <h3>TYPE II — Human Conscience Vote</h3>
+                            <p class="chamber-desc">Override the machine. Cast a raw, emotion-driven human vote — powered only by your conscience.</p>
+                        </div>
+                        <div class="vote-bar-wrap">
+                            <div class="vote-bar-bg">
+                                <div class="vote-bar human-bar" id="human-bar" style="width: 38%;">
+                                    <span class="bar-pct" id="human-pct">38%</span>
+                                </div>
+                            </div>
+                            <span class="vote-label">HUMAN OVERRIDE</span>
+                        </div>
+                        <div class="vote-count-display">
+                            <span class="vote-num" id="human-votes">380,000,000</span>
+                            <span class="vote-unit">votes cast by humans</span>
+                        </div>
+                        <button class="vote-btn human-vote-btn" id="cast-human-vote">
+                            <span class="btn-icon">✊</span> CAST CONSCIENCE VOTE
+                        </button>
+                        <div class="vote-feedback" id="human-feedback"></div>
+                    </div>
+                </div>
+
+                <!-- Live Election Result Terminal -->
+                <div class="election-terminal" id="election-terminal">
+                    <div class="terminal-header">
+                        <span class="live-tag">● LIVE</span>
+                        <span>ELECTION CONTROL ROOM — 2050 BHARAT GENERAL ELECTION</span>
+                    </div>
+                    <div class="terminal-log" id="terminal-log">
+                        <p class="log-line">> System boot: ELECTORAL_AI_v9.2 initialised...</p>
+                        <p class="log-line">> Blockchain ledger: ACTIVE | Tamper-proof nodes: 1,024</p>
+                        <p class="log-line">> Neural link authentication: ENABLED</p>
+                        <p class="log-line">> Awaiting citizen participation...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Predictor Section -->
+        <section id="predictor" class="section">
+            <div class="container">
+                <div class="predictor-card">
+                    <h2>Calculate Your Destiny</h2>
+                    <p>Enter your current details to see your role in the Neo Bharat ecosystem.</p>
+                    <div class="form-group">
+                        <input type="text" id="user-name" placeholder="Name">
+                        <input type="number" id="user-age" placeholder="Current Age">
+                        <div class="input-container">
+                            <input type="text" id="user-skill" placeholder="Type ANY current profession (e.g. Teacher, Pilot, Farmer...)">
+                            <div class="scan-line-input"></div>
+                        </div>
+                        <button id="predict-btn">CONVERT TO 2050 ROLE</button>
+                    </div>
+                    <div id="prediction-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mars -->
+        <section id="mars" class="section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('mars.png') center/cover fixed;">
+            <div class="container">
+                <div class="mars-intro">
+                    <span class="tag">FINAL CHAPTER</span>
+                    <h2>Mangalyaan Colony</h2>
+                    <p>The first interplanetary Hindu temple. Bharat extends beyond Earth.</p>
+                    <button class="btn-primary">EMBARK TO MARS</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Ministry of Defense Modal -->
+    <div id="portal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="portal-header">
+                <h2>Ministry of National Defense &amp; AI</h2>
+                <p>Accessing Classified Interplanetary Defense Data...</p>
+            </div>
+                <div class="stat-card">
+                    <span class="stat-label">OCEANIC &amp; ORBITAL NAVY</span>
+                    <div class="stat-value" data-target="1800000">0</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">AIR FORCE (HYPERSONIC)</span>
+                    <div class="stat-value" data-target="2400000">0</div>
+                </div>
+            </div>
+
+            <div class="war-history">
+                <h3>HISTORICAL CONFLICT LOG (1947 - 2050)</h3>
+                <div class="war-stats">
+                    <div class="war-item green">WINS: <span class="war-count">14</span></div>
+                    <div class="war-item yellow">STALEMATES: <span class="war-count">1</span></div>
+                    <div class="war-item red">LOSSES: <span class="war-count">0</span></div>
+                </div>
+                <p class="status-msg">STRATEGIC DOMINANCE: ABSOLUTE</p>
+            </div>
+
+            <div class="terminal-effect"></div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Overlay -->
+    <div id="image-zoom-overlay">
+        <img src="" id="zoomed-image">
+        <span class="close-zoom">&times;</span>
+    </div>
+
+    <!-- Fixed Controls -->
+    <div id="controls">
+        <button id="theme-toggle" title="Toggle Day/Night">🌗</button>
+        <button id="portal-trigger" title="Access Ministry Portal">🏛️</button>
+    </div>
+
+    <!-- Voice Assistant Indicator -->
+    <div id="voice-indicator" class="voice-indicator hidden">
+        <div class="vi-dot"></div>
+        <span id="vi-text">ARIA is speaking...</span>
+    </div>
+
+    <footer id="main-footer">
+        <p>&copy; 2050 Neo Bharat Ministry of Digital Heritage</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
